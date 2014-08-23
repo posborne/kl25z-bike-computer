@@ -1,3 +1,10 @@
+# Editor Trash
+*~
+\#*\#
+
+# CMake
+build/
+
 # Object files
 *.o
 *.ko

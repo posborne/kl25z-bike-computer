@@ -1,0 +1,3 @@
+[submodule "lib/bare-metal-arm"]
+	path = lib/bare-metal-arm
+	url = git@github.com:payne92/bare-metal-arm.git
