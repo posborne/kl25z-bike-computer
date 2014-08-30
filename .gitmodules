@@ -1,3 +1,6 @@
 [submodule "lib/bare-metal-arm"]
 	path = lib/bare-metal-arm
 	url = git@github.com:payne92/bare-metal-arm.git
+[submodule "lib/mbed"]
+	path = lib/mbed
+	url = git@github.com:mbedmicro/mbed.git

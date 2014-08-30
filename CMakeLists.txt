@@ -43,8 +43,7 @@ target_link_libraries( frdm-bare-metal-demo frdm-bare-metal )
 # Bike Computer
 #
 add_executable( bike-computer
-  src/bikecomputer.c
-  ${BMA_DIR}/tests.c
+  src/bikecomputer.cpp
 )
 target_link_libraries( bike-computer frdm-bare-metal )
 

@@ -1,8 +1,7 @@
-#include <stdio.h>
+#include <cstdio>
 #include "freedom.h"
 #include "common.h"
-
-extern char *_sbrk(int len);
+#include "syscalls.h"
 
 static void bikecomputer_init()
 {
@@ -50,6 +49,7 @@ static void bikecomputer_tick()
     iprintf("\r\n");
     iprintf("Inputs:  x=%5d   y=%5d   z=%5d ", accel_x(), accel_y(), accel_z());
     iprintf("touch=(%d,%d)\r\n", touch_data(9), touch_data(10));
+    iprintf("dio value: %d", );
     // usb_dump();
 }
 
