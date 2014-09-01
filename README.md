@@ -2,23 +2,22 @@ kl25z-bike-computer
 ===================
 
 Code for hobby project of building a bike computer around the
-Freescale FRDM-KL25z board.
-
-Note that parts of this code are taken from the bare-metal-arm project
-which is also licensed as MIT.  That project can be found at
-https://github.com/payne92/bare-metal-arm
+Freescale FRDM-KL25z board.  The mbed library and gcc4mbed
+projects are utilized to ease this development.
 
 Setup
 -----
 
-Running on Ubuntu 14.04
+First, install an appropriate cross-compiler
 
     $ sudo apt-get install gcc-arm-none-eabi
-    $ mkdir build
-    $ cd build
-    $ cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/frdm-kl25z-gcc.cmake
+
+Then, we need to build the mbed libraries and the application.  The
+details should be handled by gcc4mbed.
+
     $ make
 
-This will generate a .bin file build/bike-computer.bin.  This file can
+This will generate a .bin file KL25Z/BikeComputer.bin.  This file can
 be uploaded to the device via the USB file device made available when
 running the proper OpenSDA firmware.  See documentation on mbed.
+

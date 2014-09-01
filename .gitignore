@@ -1,9 +1,12 @@
 # Editor Trash
 *~
 \#*\#
+.cproject
+.project
 
 # CMake
 build/
+KL25Z/
 
 # Object files
 *.o
