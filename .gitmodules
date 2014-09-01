@@ -4,3 +4,6 @@
 [submodule "lib/mbed"]
 	path = lib/mbed
 	url = git@github.com:mbedmicro/mbed.git
+[submodule "lib/gcc4mbed"]
+	path = lib/gcc4mbed
+	url = git@github.com:adamgreen/gcc4mbed.git
