@@ -8,6 +8,8 @@
 #include <functional>
 #include "wheel.h"
 
+static DigitalOut tpin(PTD4);
+
 // TODO: only necessary as mbed does not allow for passing a data pointer
 // along with interrupt registrations.  Obviously, this breaks if we ever
 // have more than one wheel sensor created.
@@ -58,12 +60,14 @@ void BicycleWheel::init()
 
 void BicycleWheel::onFallingInterrupt()
 {
+    tpin = 0;
     m_debugSerialPort.writeln("Reed Switch Rising Edge");
     m_led.show(0, 0, 0.05); // subtle blue
 }
 
 void BicycleWheel::onRisingInterrupt()
 {
+    tpin = 1;
     m_debugSerialPort.writeln("Reed Switch Falling Edge");
     m_led.show(0.01, 0.05, 0.0); // subtle yellow
 }
