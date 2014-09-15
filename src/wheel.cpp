@@ -10,31 +10,6 @@
 
 static DigitalOut tpin(PTD4);
 
-// TODO: only necessary as mbed does not allow for passing a data pointer
-// along with interrupt registrations.  Obviously, this breaks if we ever
-// have more than one wheel sensor created.
-static BicycleWheel* g_wheel; /* global wheel reference */
-
-/*
- * ISR called when we receive an rising edge on the reed sensor
- */
-static void reedSwitchRisingInterrupt()
-{
-    if (g_wheel != NULL) {
-        g_wheel->onRisingInterrupt();
-    }
-}
-
-/*
- * ISR called when we receive an falling edge on the reed sensor
- */
-static void reedSwitchFallingInterrupt()
-{
-    if (g_wheel != NULL) {
-        g_wheel->onFallingInterrupt();
-    }
-}
-
 
 BicycleWheel::BicycleWheel(PinName reedSwitchPin, DebugSerialPort& debugSerialPort, MulticolorLED& debugLED) :
     m_reedSwitchPin(reedSwitchPin),
@@ -43,19 +18,17 @@ BicycleWheel::BicycleWheel(PinName reedSwitchPin, DebugSerialPort& debugSerialPo
     m_debugSerialPort(debugSerialPort),
     m_led(debugLED)
 {
-    g_wheel = this;
 }
 
 BicycleWheel::~BicycleWheel()
 {
-    g_wheel = NULL;
 }
 
 void BicycleWheel::init()
 {
     m_led.show(0.0, 0.0, 0.0);
-    m_reedSwitchInterrupt.rise(reedSwitchRisingInterrupt);
-    m_reedSwitchInterrupt.fall(reedSwitchFallingInterrupt);
+    m_reedSwitchInterrupt.rise(this, &BicycleWheel::onRisingInterrupt);
+    m_reedSwitchInterrupt.fall(this, &BicycleWheel::onFallingInterrupt);
 }
 
 void BicycleWheel::onFallingInterrupt()
