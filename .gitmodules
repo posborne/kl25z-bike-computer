@@ -7,3 +7,6 @@
 [submodule "lib/gcc4mbed"]
 	path = lib/gcc4mbed
 	url = git@github.com:adamgreen/gcc4mbed.git
+[submodule "lib/ble-sdk-kl25z"]
+	path = lib/ble-sdk-kl25z
+	url = git@github.com:posborne/ble-sdk-kl25z.git
