@@ -9,15 +9,22 @@
 #define NRF8001_BLE_RADIO_H_
 
 #include "ble_radio.h"
+#include "debug.h"
 #include "mbed.h"
 
-class NRF8001BluetoothRadio : public IBluetoothRadio
+class NRF8001BluetoothRadio
 {
 public:
-    NRF8001BluetoothRadio(PinName misoPin, PinName mosiPin, PinName sckPin, PinName reqnPin, PinName rdynPin, PinName actPin, PinName resetPin);
-    void init();
+    NRF8001BluetoothRadio(
+            DebugSerialPort& debugPort,
+            PinName misoPin, PinName mosiPin, PinName sckPin, PinName reqnPin,
+            PinName rdynPin, PinName actPin, PinName resetPin);
+    ~NRF8001BluetoothRadio() {}
+    void init(void);
+    void tick(void);
 
 private:
+    DebugSerialPort& m_debugPort;
     PinName m_misoPin;
     PinName m_mosiPin;
     PinName m_sckPin;

@@ -51,12 +51,16 @@ static aci_pins_t *a_pins_local_ptr;
 static SPI* spi = NULL;
 static DigitalIn* rdynPin = NULL;
 static DigitalOut* reqnPin = NULL;
-//static DigitalInOut mosiPin;
-//static DigitalInOut misoPin;
-//static DigitalInOut sckPin;
 static DigitalOut* resetPin;
 static DigitalIn* activePin;
 static InterruptIn* rdynInterrupt;
+
+
+void __ble_assert(const char *file, uint16_t line)
+{
+    debugSerialPort.printf("ERROR %s: %u\r\n");
+    while (1);
+}
 
 
 void m_aci_data_print(hal_aci_data_t *p_data)
